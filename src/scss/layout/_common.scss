@@ -1,0 +1,146 @@
+@use "./variables" as *;
+@use "./colors" as *;
+@use "./mixins" as *;
+@use "./typography" as *;
+
+.title-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.subtitle {
+  @include text;
+  @include line;
+}
+
+.social {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 32px;
+
+  a {
+    display: block;
+    font-size: 0;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.icon {
+
+  &-phone,
+  &-email,
+  &-address {
+
+    &::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &-phone {
+
+    &::before {
+      background-image: url(../images/icon_phone.svg);
+    }
+  }
+
+  &-email {
+
+    &::before {
+      background-image: url(../images/icon_email.svg);
+    }
+  }
+
+  &-address {
+
+    &::before {
+      background-image: url(../images/icon_address.svg);
+    }
+  }
+
+  &-facebook,
+  &-booking,
+  &-instagram {
+
+    &::before {
+      content: '';
+      width: 32px;
+      height: 32px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &-facebook {
+
+    &::before {
+      background-image: url(../images/icon_facebook.svg);
+    }
+  }
+
+  &-booking {
+
+    &::before {
+      background-image: url(../images/icon_booking.svg);
+    }
+  }
+
+  &-instagram {
+
+    &::before {
+      background-image: url(../images/icon_instagram.svg);
+    }
+  }
+}
+
+.contacts-list {
+  display: flex;
+  list-style-type: none;
+  @include mb-64;
+
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    color: $black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    @include text;
+
+    &:hover {
+      color: $hover;
+    }
+
+    &:active,
+    &:focus {
+      color: $black;
+    }
+  }
+}
+
+.about,
+.attractions,
+.amenities,
+.contacts {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
+}
+
+.about.section-loaded,
+.attractions.section-loaded,
+.amenities.section-loaded,
+.contacts.section-loaded {
+  opacity: 1;
+  visibility: visible;
+}

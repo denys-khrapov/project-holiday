@@ -1,0 +1,83 @@
+@use "./layout/variables" as *;
+@use "./layout/colors" as *;
+@use "./layout/mixins" as *;
+@use "./layout/typography" as *;
+
+.attractions {
+	background: $gray;
+	text-align: center;
+	@include pg-64;
+
+	&__subtitle {
+		margin: 0 auto;
+	}
+
+	.title-box {
+		&:not(:last-child) {
+			margin-bottom: 32px;
+		}
+	}
+
+	.link {
+		margin: 0 auto;
+	}
+}
+
+.list-attractions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 24px;
+
+	@media (min-width:$pc) {
+		row-gap: 96px;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 32px;
+	}
+
+	@media (min-width:$pc) {
+		&:not(:last-child) {
+			margin-bottom: 68px;
+		}
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 24px;
+
+		@media (min-width:$pc) {
+			&:nth-child(odd) {
+				width: 100%;
+				max-width: 740px;
+			}
+
+			&:nth-child(even) {
+				width: 100%;
+				max-width: 920px;
+			}
+		}
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		flex: 1 0 0;
+		min-width: 288px;
+
+		@media (min-width:$pc) {
+			width: fit-content;
+			max-width: 200px;
+			min-width: auto;
+		}
+	}
+
+	&__title {
+		margin-top: auto;
+		@include heading5;
+	}
+
+}

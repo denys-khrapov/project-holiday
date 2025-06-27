@@ -1,0 +1,72 @@
+@use "./layout/variables" as *;
+@use "./layout/colors" as *;
+@use "./layout/mixins" as *;
+@use "./layout/typography" as *;
+
+.footer {
+	text-align: center;
+	@include pg-64;
+
+	&__logo {
+		display: block;
+		@include mb-64;
+	}
+
+	&__list {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 8px;
+
+		a {
+			white-space: nowrap;
+			column-gap: 0;
+
+			&::before {
+				display: none;
+			}
+
+			&::after {
+				content: '/';
+				margin-left: 8px;
+			}
+		}
+
+		li {
+			&:last-child {
+				a {
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	&__social {
+		@include mb-64;
+	}
+
+	&__bottom {
+		.copy-right {
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: $black;
+			transition: color 0.3s ease-in-out;
+			@include text;
+
+			&:hover {
+				color: $hover;
+			}
+
+			&:active,
+			&:focus {
+				color: $black;
+			}
+		}
+	}
+}
